@@ -1,0 +1,192 @@
+\documentclass{beamer}
+
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{url}
+
+\usetheme{AnnArbor}
+\usefonttheme[onlymath]{serif}
+
+\title[Intro DNNs]{\textbf{Introduction to Deep Neural Networks} \\
+\textbf{\normalsize GPU computing perspective}\\
+\normalsize Getting Started}
+\author{Yuhuang Hu \and Chu Kiong Loo}
+\institute[UM]{Advanced Robotic Lab\\
+Department of Artificial Intelligence\\
+Faculty of Computer Science \& IT\\
+University of Malaya}
+
+\date{}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+    \frametitle{Introduction}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Prerequisites}
+    
+    \begin{itemize}
+        \item[$\star$] Basic training in Calculus 
+        \item[$\star$] Basic training in Linear Algebra
+            \begin{itemize}
+                \item Matrix operations
+                \item Matrix properties: transform, rank, norm, determinant, etc
+                \item Eigendecomposition, Singular Value Decomposition.
+            \end{itemize}
+        \item[$\star$] Basic programming skills
+            \begin{itemize}
+                \item If-else conditioning
+                \item Loops
+                \item Function, class, library
+                \item Source code control: Git (optional)
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Software and Tools}
+    
+    \begin{itemize}
+        \item[$\star$] Ubuntu 14.04
+        \item[$\star$] CUDA Toolkit 6.5
+        \item[$\star$] Python 2.7.9 (Why not 3.*?)
+        \item[$\star$] Theano
+        \item[$\star$] numpy, scipy, etc
+        \item[$\star$] Eclipse+PyDev
+    \end{itemize}
+\end{frame}
+
+\section{System Setup}
+
+\begin{frame}
+    \frametitle{Ubuntu 14.04 Installation}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Nvidia Graphics Driver}
+\end{frame}
+
+\begin{frame}
+    \frametitle{CUDA Toolkit}
+    
+\end{frame}
+
+\section{Scientific computing in Python}
+
+\begin{frame}
+    \frametitle{Anaconda}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Anaconda: post installation}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Eclipse and PyDev}
+\end{frame}
+
+\section{Machine Learning Basics}
+
+\subsection{Linear Algebra}
+
+\begin{frame}
+    \frametitle{Scalar, Vector, Matrix and Tensor}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Matrix Operations}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Matrix Properties}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Singular Value Decomposition (SVD)}
+\end{frame}
+
+\subsection{Basic concepts}
+
+\begin{frame}
+    \frametitle{Optimization Problem: Hypothesis}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Optimization Problem: Cost function}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Dataset: How to split the data?}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Dataset: Cross validation}
+\end{frame}
+
+\section{Dataset Preparation}
+
+\begin{frame}
+    \frametitle{MNIST}
+\end{frame}
+
+\begin{frame}
+    \frametitle{CIFAR-10}
+\end{frame}
+
+\section{Preprocessing}
+
+\subsection{Data Standardization}
+
+\begin{frame}
+    \frametitle{Mean subtraction}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Unit variance}
+\end{frame}
+
+\subsection{Principle Components Analysis}
+
+\begin{frame}
+    \frametitle{PCA}
+\end{frame}
+
+\subsection{ZCA Whitening}
+
+\begin{frame}
+    \frametitle{ZCA Whitening}
+\end{frame}
+
+\section{Gradient-based Optimization}
+
+\begin{frame}
+    \frametitle{SGD}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Jacobian}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Hessian}
+\end{frame}
+
+\section{Summary}
+
+\begin{frame}
+    \frametitle{Summary}
+\end{frame}
+
+\end{document}
