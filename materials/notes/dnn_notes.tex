@@ -41,7 +41,7 @@
 \maketitle
 
 \begin{abstract}%   <- trailing '%' for backward compatibility of .sty file
-Some abstract text
+Deep Learning (DL) might be \emph{the} hottest topic right now in Machine Learning and Artificial Intelligence community. The successful stories of DL in weak AI problems are all over the news (especially in recent 2 years). It is critical to understand Deep Learning concepts while one is building up state-of-art intelligent software. This note is designed to help 
 \end{abstract}
 
 \begin{keywords}
@@ -49,37 +49,27 @@ Some abstract text
 \end{keywords}
 
 \newpage
-\section{Getting Started}
-
-\subsection{Basics in machine learning}
-
-\subsection{Preprocessing}
-
-\subsection{Gradient-based optimization}
+\input{dnn_notes_get_start.tex}
 
 \newpage
-\section{Classification}
-
-\subsection{What is classification?}
-
-\subsection{Logistic regression and softmax regression}
-
-\subsection{Linear support vector machine}
+\input{dnn_notes_classification.tex}
 
 \newpage
-\section{Multilayer Perceptron}
+\input{dnn_notes_mlp.tex}
 
 \newpage
-\section{Auto-encoders}
+\input{dnn_notes_autoencoder.tex}
 
 \newpage
-\section{Convolutional Neural Networks}
+\input{dnn_notes_cnn.tex}
 
 \newpage
 \section{Long-short Term Memory}
 
 \newpage
 \section{General Discussion}
+
+\newpage
 
 % Acknowledgements should go at the end, before appendices and references
 
@@ -93,43 +83,7 @@ of Defense (MURI N00014-00-1-0637). \cite{chow:68} }
 
 \newpage
 
-\appendix
-\section*{Appendix A.}
-\label{app:theorem}
-
-% Note: in this sample, the section number is hard-coded in. Following
-% proper LaTeX conventions, it should properly be coded as a reference:
-
-%In this appendix we prove the following theorem from
-%Section~\ref{sec:textree-generalization}:
-
-In this appendix we prove the following theorem from
-Section~6.2:
-
-\noindent
-{\bf Theorem} {\it Let $u,v,w$ be discrete variables such that $v, w$ do
-not co-occur with $u$ (i.e., $u\neq0\;\Rightarrow \;v=w=0$ in a given
-dataset $\dataset$). Let $N_{v0},N_{w0}$ be the number of data points for
-which $v=0, w=0$ respectively, and let $I_{uv},I_{uw}$ be the
-respective empirical mutual information values based on the sample
-$\dataset$. Then
-\[
-	N_{v0} \;>\; N_{w0}\;\;\Rightarrow\;\;I_{uv} \;\leq\;I_{uw}
-\]
-with equality only if $u$ is identically 0.} \hfill\BlackBox
-
-\noindent
-{\bf Proof}. We use the notation:
-\[
-P_v(i) \;=\;\frac{N_v^i}{N},\;\;\;i \neq 0;\;\;\;
-P_{v0}\;\equiv\;P_v(0)\; = \;1 - \sum_{i\neq 0}P_v(i).
-\]
-These values represent the (empirical) probabilities of $v$
-taking value $i\neq 0$ and 0 respectively.  Entropies will be denoted
-by $H$. We aim to show that $\fracpartial{I_{uv}}{P_{v0}} < 0$....\\
-
-{\noindent \em Remainder omitted in this sample. See http://www.jmlr.org/papers/ for full paper.}
-
+%\appendix
 
 \vskip 0.2in
 \bibliography{dnnotesref}
