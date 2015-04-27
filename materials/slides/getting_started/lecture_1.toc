@@ -1,0 +1,14 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{System Setup}{6}{0}{2}
+\beamer@sectionintoc {3}{Scientific computing in Python}{9}{0}{3}
+\beamer@sectionintoc {4}{Machine Learning Basics}{12}{0}{4}
+\beamer@subsectionintoc {4}{1}{Linear Algebra}{12}{0}{4}
+\beamer@subsectionintoc {4}{2}{Basic concepts}{16}{0}{4}
+\beamer@sectionintoc {5}{Dataset Preparation}{20}{0}{5}
+\beamer@sectionintoc {6}{Preprocessing}{22}{0}{6}
+\beamer@subsectionintoc {6}{1}{Data Standardization}{22}{0}{6}
+\beamer@subsectionintoc {6}{2}{Principle Components Analysis}{24}{0}{6}
+\beamer@subsectionintoc {6}{3}{ZCA Whitening}{25}{0}{6}
+\beamer@sectionintoc {7}{Gradient-based Optimization}{26}{0}{7}
+\beamer@sectionintoc {8}{Summary}{29}{0}{8}
