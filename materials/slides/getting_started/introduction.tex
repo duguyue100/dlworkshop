@@ -3,13 +3,19 @@
 \usepackage{amsmath, amssymb}
 \usepackage{graphicx}
 \usepackage{url}
+\usepackage{xspace}
+\usepackage{pifont}
+\usepackage{minted}
+\usepackage{verbatim}
+\usepackage{wasysym}
+\usepackage{apacite}
 
 \usetheme{AnnArbor}
 \usefonttheme[onlymath]{serif}
 
 \title[Intro DNNs]{\textbf{Practical Deep Neural Networks} \\
 \textbf{\normalsize GPU computing perspective}\\
-\normalsize Getting Started}
+\normalsize Introduction}
 \author{Yuhuang Hu \and Chu Kiong Loo}
 \institute[UM]{Advanced Robotic Lab\\
 Department of Artificial Intelligence\\
@@ -30,28 +36,58 @@ University of Malaya}
 \section{Introduction}
 
 \begin{frame}
-    \frametitle{Introduction}
+  \frametitle{Objectives}
+
+  \begin{itemize}
+    \item[\ding{226}] Light introduction of numerical computation.
+    \item[\ding{226}] Fundamentals of Machine Learning.
+    \item[\ding{226}] Support Vector Machine, Softmax Regression.
+    \item[\ding{226}] Feed-forward Neural Network.
+    \item[\ding{226}] Convolutional Networks.
+    \item[\ding{226}] Recurrent Neural Networks.
+  \end{itemize} 
 \end{frame}
 
 \begin{frame}
-    \frametitle{Prerequisites}
+  \frametitle{Prerequisites}
     
+  \begin{itemize}
+  \item[$\star$] Basic training in Calculus 
+  \item[$\star$] Basic training in Linear Algebra
     \begin{itemize}
-        \item[$\star$] Basic training in Calculus 
-        \item[$\star$] Basic training in Linear Algebra
-            \begin{itemize}
-                \item Matrix operations
-                \item Matrix properties: transform, rank, norm, determinant, etc
-                \item Eigendecomposition, Singular Value Decomposition.
-            \end{itemize}
-        \item[$\star$] Basic programming skills
-            \begin{itemize}
-                \item If-else conditioning
-                \item Loops
-                \item Function, class, library
-                \item Source code control: Git (optional)
-            \end{itemize}
+    \item Matrix operations
+    \item Matrix properties: transform, rank, norm, determinant, etc
+    \item Eigendecomposition, Singular Value Decomposition.
     \end{itemize}
+  \item[$\star$] Basic programming skills
+    \begin{itemize}
+    \item If-else conditioning
+    \item Loops
+    \item Function, class, library
+    \item Source code control: Git (optional)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{References}
+
+  \begin{itemize}
+    \item[\ding{169}] Deep Learning: An MIT Press book in preparation
+
+      {\small \emph{Main reference in this workshop, still in development, awesome structure, awesome contents.}}
+
+    \item[\ding{169}] Machine Learning: A probabilistic perspective
+
+      {\small \emph{One of the best Machine Learning books on the market.}}
+    \item[\ding{169}] CS231n Convolutional Neural Networks for Visual Recognition Notes
+
+      {\small \emph{Nice structured, well written, loads of pictures.}}
+
+    \item[\ding{169}] CS229 Machine Learning Course Materials
+
+      {\small \emph{For basic knowledge, well written, easy-to-read.}}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -59,7 +95,7 @@ University of Malaya}
     
     \begin{itemize}
         \item[$\star$] Ubuntu 14.04
-        \item[$\star$] CUDA Toolkit 6.5
+        \item[$\star$] CUDA Toolkit 7
         \item[$\star$] Python 2.7.9 (Why not 3.*?)
         \item[$\star$] Theano
         \item[$\star$] numpy, scipy, etc
@@ -67,37 +103,17 @@ University of Malaya}
     \end{itemize}
 \end{frame}
 
-\section{System Setup}
-
 \begin{frame}
-    \frametitle{Ubuntu 14.04 Installation}
-    
+  \frametitle{Reading List}
+
+  A reading list is prepared for this workshop, all reading materials can be found at:
+
+  \url{http://rt.dgyblog.com/ref/ref-learning-deep-learning.html}\vspace{1cm}
+
+  \centering\emph{The list keeps expanding!!}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Nvidia Graphics Driver}
-\end{frame}
-
-\begin{frame}
-    \frametitle{CUDA Toolkit}
-    
-\end{frame}
-
-\section{Scientific computing in Python}
-
-\begin{frame}
-    \frametitle{Anaconda}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Anaconda: post installation}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Eclipse and PyDev}
-\end{frame}
-
-\section{Machine Learning Basics}
+\section{Machine Learning Prequel}
 
 \subsection{Linear Algebra}
 
@@ -183,10 +199,14 @@ University of Malaya}
     \frametitle{Hessian}
 \end{frame}
 
-\section{Summary}
+\section{Q\&A}
 
 \begin{frame}
-    \frametitle{Summary}
+  \frametitle{Q\%A}
+  
+  \begin{figure}
+    \includegraphics[width=0.6\textwidth]{ai_jokes.jpg}
+  \end{figure}
 \end{frame}
 
 \end{document}
