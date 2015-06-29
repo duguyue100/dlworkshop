@@ -8,7 +8,8 @@
 \usepackage{minted}
 \usepackage{verbatim}
 \usepackage{wasysym}
-\usepackage{apacite}
+\usepackage[notocbib]{apacite}
+\usepackage{bm}
 
 \usetheme{AnnArbor}
 \usefonttheme[onlymath]{serif}
@@ -33,6 +34,14 @@ University of Malaya}
 
 \tableofcontents
 \end{frame}
+
+\AtBeginSection[]
+  {
+     \begin{frame}
+     \frametitle{Outline}
+     \tableofcontents[currentsection]
+     \end{frame}
+  }
 
 \section{Introduction}
 
@@ -65,12 +74,6 @@ http://cs229.stanford.edu/notes/cs229-notes4.pdf
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle[Practical Materials]
-
-  TODO
-\end{frame}
-
 \section{Learning Algorithms}
 
 \begin{frame}
@@ -88,31 +91,124 @@ http://cs229.stanford.edu/notes/cs229-notes4.pdf
 
 \begin{frame}
   \frametitle{The task $T$}
+
+  \begin{description}
+    \item[Classification] specify which $k$ categories some input belongs to. ($f: \mathbb{R}^{n}\rightarrow \{1,\ldots,k\}$)
+    \item[Regression] predict a numerical value given some input. ($f: \mathbb{R}^{n}\rightarrow\mathbb{R}$)
+    \item[Transcription] output a sequence of symbols, rather than a category code. (similar to classification, \emph{e.g.} speech recognition, machine translation, image captioning)
+    \item[Denoising] predict \emph{clean} samples $\bm{x}$ from \emph{corrupted} samples $\tilde{\bm{x}}$ (estimate $P(\bm{x}|\tilde{\bm{x}})$).
+  \end{description}
+
+\small
+\emph{Many more types are not listed here.}
 \end{frame}
 
 \begin{frame}
   \frametitle{The performance measure $P$}
+
+  \begin{itemize}
+    \item[\ding{226}] Measure $P$ is usually specific to the task $T$. (\emph{e.g.} accuracy to classification)
+    \item[\ding{226}] Batches of unseen \emph{test} data is introduced to measure performance.
+    \item[\ding{226}] Design measure $P$ can be very subtle. It should be effective.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{The experience $E$}
+
+  \emph{Experience is what learning algorithms are allowed to have during learning process.}
+
+  \begin{itemize}
+    \item[\ding{229}] Experience is usually an \emph{dataset}, a collection of \emph{examples}.
+    \item[\ding{229}] \emph{Unsupervised learning algorithms} experience a dataset containing many features, learning useful structure of the dataset (estimate $p(\bm{x})$).
+    \item[\ding{229}] \emph{Supervised learning algorithms} experience a dataset containing features, but each example is also associated with a \emph{label} or \emph{target} (estimate $p(\bm{y}|\bm{x})$).
+  \end{itemize}
+  
 \end{frame}
-
-\subsection{Supervised Learning}
-
-\subsection{Unsupervised Learning}
 
 \section{Linear Regression}
 
 \begin{frame}
-  \frametitle{}
+  \frametitle{Problem Description}
+
+  The \emph{task} is to build a system that can take a vector $\bm{x}\in\mathbb{R}^{n}$ as input and predict the value of a scalar $y\in\mathbb{R}$ as its output. Let $\hat{y}$ be the value that out model predicts $y$ should take on. We define the output to be
+  \begin{equation*}
+    \hat{y}=\bm{w}^{\top}\bm{x}+b
+  \end{equation*}
+  where $\bm{w}\in\mathbb{R}^{n}$ is a vector of parameters and $b$ is an intercept term.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Performance Measure and Experience}
+
+  The \emph{experience} contains a set of training examples where each sample is a pair of input and output $(\bm{x}, y)$.
+
+  One \emph{performance measure} here can apply is \emph{mean squared error} of the model on test set. Let test example as $\bm{x}^{(\text{test})}$ and regression targets as $\bm{y}^{(\text{test})}$, $\hat{\bm{y}}^{(\text{test})}$ is the predictions of the model on the test set, the mean square error is given by:
+  \begin{equation*}
+    MSE_{\text{test}}=\frac{1}{m}\sum_{i}(\hat{\bm{y}}^{(\text{test})}-\bm{y}^{(\text{test})})_{i}^{2}.
+  \end{equation*}
 \end{frame}
 
 \section{Generalization, Capacity, Overfitting and Underfitting}
 
-\section{Maximum Likelihood Estimation}
+\begin{frame}
+  \frametitle{Generalization, Capacity, Overfitting, Underfitting}
+  
+  \begin{description}
+    \item[Generalization] ability to perform well on previously unobserved inputs.
+    \item[Capacity] ability to fit a wide variety of functions.
+    \item[Overfitting] occurs when the gap between training error and test error is too large
+    \item[Underfitting] occurs when the model is not able to obtain a sufficiently low error value on the training set.
+  \end{description}
+\end{frame}
 
-\section{Q\&A}
+\begin{frame}
+  \frametitle{Generalization, Capacity, Overfitting, Underfitting}
+
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{relationships_between_terms.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{No Free Lunch Theorem}
+
+  \begin{quote}
+    The no free lunch theorem for machine learning \cite{Wolpert:1996} states that, averaged over all possible data generating distributions, every classification algorithm has the same error rate when classifying previous unobserved points. In some sense, no ML algorithm is universally any better than any other.
+  \end{quote}
+
+  \centering
+  \textbf{Seek solution for some relevant distributions, NOT universal distribution.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hyperparameters, Validation Sets}
+
+  \begin{description}
+    \item[Hyperparameters] settings that control the behavior of the learning algorithm. Usually choose empirically.
+      \item[Validation Sets] Subset of data used to guide the selection of hyperparameters. (split from training dataset, usually 20\%)
+  \end{description}
+\end{frame}
+
+\section{Fundamental Curse of Machine Learning}
+
+\begin{frame}
+  \frametitle{Curse of Dimensionality}
+  
+  Many machine learning problem become exceedingly difficult when the number of dimensions in the data is high. The phenomenon is known as the \emph{curse of dimensionality}. Of particular concern is that the number of possible distinct configurations of the variables of interest increases \textbf{exponentially} as the dimensionality increases.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Curse of Dimensionality}
+
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{curse_of_dimensionality.pdf}
+  \end{figure}
+\end{frame}
+
+\section*{Q\&A}
 \begin{frame}
   \frametitle{Q\& A}
   \begin{figure}

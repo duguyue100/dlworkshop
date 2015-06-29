@@ -8,7 +8,7 @@
 \usepackage{minted}
 \usepackage{verbatim}
 \usepackage{wasysym}
-\usepackage[numberedbib]{apacite}
+\usepackage[notocbib]{apacite}
 \usepackage{bm}
 
 \DeclareMathOperator{\Tr}{Tr}
@@ -35,6 +35,14 @@ University of Malaya}
     \frametitle{Outline}
     \tableofcontents
 \end{frame}
+
+\AtBeginSection[]
+  {
+     \begin{frame}
+     \frametitle{Outline}
+     \tableofcontents[currentsection]
+     \end{frame}
+  }
 
 \section{Introduction}
 
@@ -409,7 +417,7 @@ University of Malaya}
     where $\epsilon$ is a regularization term. When $x$ takes values around $[-1, 1]$, a value of $\epsilon\approx 10^{-5}$ might be typical.
 \end{frame}
 
-\section{Q\&A}
+\section*{Q\&A}
 
 \begin{frame}
   \frametitle{Q\&A}
