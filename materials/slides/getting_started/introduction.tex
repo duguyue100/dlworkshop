@@ -52,7 +52,7 @@ University of Malaya}
   \begin{itemize}
     \item[\ding{226}] Light introduction of numerical computation.
     \item[\ding{226}] Fundamentals of Machine Learning.
-    \item[\ding{226}] Support Vector Machine, Softmax Regression.
+    \item[\ding{226}] Softmax Regression.
     \item[\ding{226}] Feed-forward Neural Network.
     \item[\ding{226}] Convolutional Networks.
     \item[\ding{226}] Recurrent Neural Networks.
@@ -412,7 +412,7 @@ University of Malaya}
     ZCA whitening is just a recover version of PCA whitening:
 
     \begin{equation*}
-      x_{\text{ZCA}}=Ux_{\text{PCA}}=U\frac{x_{rot}}{\bm{\Lambda}+\epsilon}
+      x_{\text{ZCA}}=Ux_{\text{PCA}}=U\frac{x_{\text{rot}}}{\sqrt{\bm{\Lambda}+\epsilon}}
     \end{equation*}
     where $\epsilon$ is a regularization term. When $x$ takes values around $[-1, 1]$, a value of $\epsilon\approx 10^{-5}$ might be typical.
 \end{frame}

@@ -96,7 +96,7 @@ http://cs229.stanford.edu/notes/cs229-notes4.pdf
     \item[Classification] specify which $k$ categories some input belongs to. ($f: \mathbb{R}^{n}\rightarrow \{1,\ldots,k\}$)
     \item[Regression] predict a numerical value given some input. ($f: \mathbb{R}^{n}\rightarrow\mathbb{R}$)
     \item[Transcription] output a sequence of symbols, rather than a category code. (similar to classification, \emph{e.g.} speech recognition, machine translation, image captioning)
-    \item[Denoising] predict \emph{clean} samples $\bm{x}$ from \emph{corrupted} samples $\tilde{\bm{x}}$ (estimate $P(\bm{x}|\tilde{\bm{x}})$).
+    \item[Denoising] predict \emph{clean} samples $\bm{x}$ from \emph{corrupted} samples $\tilde{\mathbf{x}}$ (estimate $P(\mathbf{x}|\tilde{\mathbf{x}})$).
   \end{description}
 
 \small
@@ -120,8 +120,8 @@ http://cs229.stanford.edu/notes/cs229-notes4.pdf
 
   \begin{itemize}
     \item[\ding{229}] Experience is usually an \emph{dataset}, a collection of \emph{examples}.
-    \item[\ding{229}] \emph{Unsupervised learning algorithms} experience a dataset containing many features, learning useful structure of the dataset (estimate $p(\bm{x})$).
-    \item[\ding{229}] \emph{Supervised learning algorithms} experience a dataset containing features, but each example is also associated with a \emph{label} or \emph{target} (estimate $p(\bm{y}|\bm{x})$).
+    \item[\ding{229}] \emph{Unsupervised learning algorithms} experience a dataset containing many features, learning useful structure of the dataset (estimate $p(\mathbf{x})$).
+    \item[\ding{229}] \emph{Supervised learning algorithms} experience a dataset containing features, but each example is also associated with a \emph{label} or \emph{target} (estimate $p(\mathbf{y}|\mathbf{x})$).
   \end{itemize}
   
 \end{frame}
@@ -131,21 +131,21 @@ http://cs229.stanford.edu/notes/cs229-notes4.pdf
 \begin{frame}
   \frametitle{Problem Description}
 
-  The \emph{task} is to build a system that can take a vector $\bm{x}\in\mathbb{R}^{n}$ as input and predict the value of a scalar $y\in\mathbb{R}$ as its output. Let $\hat{y}$ be the value that out model predicts $y$ should take on. We define the output to be
+  The \emph{task} is to build a system that can take a vector $\mathbf{x}\in\mathbb{R}^{n}$ as input and predict the value of a scalar $y\in\mathbb{R}$ as its output. Let $\hat{y}$ be the value that out model predicts $y$ should take on. We define the output to be
   \begin{equation*}
-    \hat{y}=\bm{w}^{\top}\bm{x}+b
+    \hat{y}=\mathbf{w}^{\top}\mathbf{x}+b
   \end{equation*}
-  where $\bm{w}\in\mathbb{R}^{n}$ is a vector of parameters and $b$ is an intercept term.
+  where $\mathbf{w}\in\mathbb{R}^{n}$ is a vector of parameters and $b$ is an intercept term.
 \end{frame}
 
 \begin{frame}
   \frametitle{Performance Measure and Experience}
 
-  The \emph{experience} contains a set of training examples where each sample is a pair of input and output $(\bm{x}, y)$.
+  The \emph{experience} contains a set of training examples where each sample is a pair of input and output $(\mathbf{x}, y)$.
 
-  One \emph{performance measure} here can apply is \emph{mean squared error} of the model on test set. Let test example as $\bm{x}^{(\text{test})}$ and regression targets as $\bm{y}^{(\text{test})}$, $\hat{\bm{y}}^{(\text{test})}$ is the predictions of the model on the test set, the mean square error is given by:
+  One \emph{performance measure} here can apply is \emph{mean squared error} of the model on test set. Let test example as $\mathbf{x}^{(\text{test})}$ and regression targets as $\mathbf{y}^{(\text{test})}$, $\hat{\mathbf{y}}^{(\text{test})}$ is the predictions of the model on the test set, the mean square error is given by:
   \begin{equation*}
-    MSE_{\text{test}}=\frac{1}{m}\sum_{i}(\hat{\bm{y}}^{(\text{test})}-\bm{y}^{(\text{test})})_{i}^{2}.
+    MSE_{\text{test}}=\frac{1}{m}\sum_{i}(\hat{\mathbf{y}}^{(\text{test})}-\mathbf{y}^{(\text{test})})_{i}^{2}.
   \end{equation*}
 \end{frame}
 

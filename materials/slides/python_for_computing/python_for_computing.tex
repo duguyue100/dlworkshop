@@ -52,7 +52,7 @@ University of Malaya}
 
 \begin{minipage}{0.6\textwidth}
 \begin{itemize}
-\item[\ding{55}] There are more than thousands kinds of \texttt{*nix} distribution, and \ubuntu is only one of them.
+\item[\ding{55}] There are more than a thousand kinds of \texttt{*nix} distribution, and \ubuntu is only one of them.
 \item[\ding{55}] \ubuntu contains non-free software.
 \item[\checkmark] \ubuntu is widely used by academic community in computing.
 \item[\checkmark] Most of Deep Learning libraries explicitly support \ubuntu.
@@ -108,9 +108,10 @@ http://continuum.io/downloads
 Since most of software are not compatible with \texttt{Python 3.*}, please download \texttt{Python 2.7}. And Install with
 \begin{block}{Setup Anaconda}
 \begin{verbatim}
-$ bash Anaconda-2.2.0-Linux-x86.sh
+$ bash Anaconda-2.3.0-Linux-x86_64.sh
 \end{verbatim}
 \end{block}
+\emph{download \texttt{Anaconda-2.3.0-Linux-x86.sh} if you use 32 bit}
 
 \end{frame}
 
@@ -289,8 +290,8 @@ Procedures discussed here are experimental, no success guarantee.
 \begin{itemize}
 \item[\ding{112}] A computer with a NVIDIA graphics card that supports CUDA technology.
 \item[\ding{112}] Enough disk space and at least 4 GB RAM. (Assume 64bit machine)
-\item[\ding{112}] Compute Capability of your card has to be at least 3.0 if you are intending to use \texttt{cuDNN} routines.
-\item[\ding{112}] A heart that is strong enough to take failure.
+\item[\ding{112}] \href{https://developer.nvidia.com/cuda-gpus}{Compute Capability} of your card has to be at least 3.0 if you are intending to use \texttt{cuDNN} routines.
+\item[\ding{112}] A heart that is strong enough to take failures.
 \end{itemize}
 
 \end{frame}
@@ -301,7 +302,7 @@ Procedures discussed here are experimental, no success guarantee.
 \begin{itemize}
 \item[\ding{43}] Check out your GPU's info:
 \begin{verbatim}
-$ lspci | grep "VGA"
+$ lspci | grep -i nvidia
 \end{verbatim}
 You should get similar messages like:
 \begin{verbatim}
@@ -319,10 +320,26 @@ Corporation GK104GL [GRID K520] (rev a1)
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{Install GPU driver}
+  \begin{itemize}
+    \item[\ding{43}] Go to terminal interface through \texttt{Ctrl+Alt+F1}.
+    \item[\ding{43}] Blacklist \texttt{nouveau}, open \texttt{blacklist.conf}:
+\begin{verbatim}
+$ sudo nano /etc/modprobe.d/blacklist.conf
+\end{verbatim}
+    \item[\ding{43}] Add \texttt{blacklist nouveau} at the end of the file and save.
+    \item[\ding{43}] Close the service of \texttt{lightgdm}:
+\begin{verbatim}
+$ service lightgdm stop
+\end{verbatim}
+    \item[\ding{43}] You are ready to install the driver
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
 \frametitle{Install GPU driver}
 
 \begin{itemize}
-\item[\ding{43}] Close \texttt{nouveau} [further experiment]
 \item[\ding{43}] Install GPU driver
 \begin{verbatim}
 $ bash NVIDIA-Linux-xx.run
