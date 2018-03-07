@@ -37,13 +37,13 @@ University of Z\"urich and ETH Z\"urich}
 \tableofcontents
 \end{frame}
 
-\AtBeginSection[]
-  {
-     \begin{frame}
-     \frametitle{Outline}
-     \tableofcontents[currentsection]
-     \end{frame}
-  }
+% \AtBeginSection[]
+%   {
+%      \begin{frame}
+%      \frametitle{Outline}
+%      \tableofcontents[currentsection]
+%      \end{frame}
+%   }
 
 % \section{Introduction}
 
@@ -135,7 +135,7 @@ University of Z\"urich and ETH Z\"urich}
   \begin{equation*}
     \hat{y}=\mathbf{w}^{\top}\mathbf{x}+b
   \end{equation*}
-  where $\mathbf{w}\in\mathbb{R}^{n}$ is a vector of parameters and $b$ is an intercept term.
+  where $\mathbf{w}\in\mathbb{R}^{n}$ is a vector of parameters and $b$ is a bias term.
 \end{frame}
 
 \begin{frame}
@@ -145,7 +145,7 @@ University of Z\"urich and ETH Z\"urich}
 
   One \emph{performance measure} here can apply is \emph{mean squared error} of the model on test set. Let test example as $\mathbf{x}^{(\text{test})}$ and regression targets as $\mathbf{y}^{(\text{test})}$, $\hat{\mathbf{y}}^{(\text{test})}$ is the predictions of the model on the test set, the mean square error is given by:
   \begin{equation*}
-      \text{MSE}_{\text{test}}=\frac{1}{m}\sum_{i}(\hat{\mathbf{y}}^{(\text{test})}-\mathbf{y}^{(\text{test})})_{i}^{2}.
+      \text{MSE}_{\text{test}}=\frac{1}{N}\sum_{i=1}^{N}(\hat{\mathbf{y}}^{(\text{test})}-\mathbf{y}^{(\text{test})})_{i}^{2}.
   \end{equation*}
 \end{frame}
 
@@ -155,9 +155,9 @@ University of Z\"urich and ETH Z\"urich}
   \frametitle{Logistic Function}
 
   \begin{align*}
-    f(\mathbf{x})&=\frac{1}{1+\exp(-\mathbf{W}^{\top}\mathbf{x})} \\
-    p(y=1|\mathbf{x})&=f(\mathbf{x})\\
-    p(y=0|\mathbf{x})&=1-f(\mathbf{x})
+    \sigma(\mathbf{x})&=\frac{1}{1+\exp(-\mathbf{W}^{\top}\mathbf{x}+b)} \\
+    p(y=1|\mathbf{x})&=\sigma(\mathbf{x})\\
+    p(y=0|\mathbf{x})&=1-\sigma(\mathbf{x})
   \end{align*}
 \end{frame}
 
@@ -165,29 +165,29 @@ University of Z\"urich and ETH Z\"urich}
   \frametitle{Logistic Regression --- Binary Classifier}
 
   \begin{align*}
-    J(\mathbf{W})&=-\frac{1}{N}\sum_{i}\left(y^{i}\log(P(y=1|\mathbf{x}^{i}))+(1-y^{i})\log(p(y=0|\mathbf{x}^{i}))\right) \\
-    W^{\star}&=\argmin_{W}J(\mathbf{W})
+    J(\theta)&=-\frac{1}{N}\sum_{i}\left(y^{i}\log(P(y=1|\mathbf{x}^{i}))+(1-y^{i})\log(p(y=0|\mathbf{x}^{i}))\right) \\
+    \theta^{\star}&=\argmin_{\theta}J(\theta)
   \end{align*}
 \end{frame}
 
-\section{Softmax Regression}
-
-\begin{frame}
-  \frametitle{Extending Logistic Function --- Softmax Function}
-
-  \begin{equation*}
-    P(y=k|\mathbf{x}; \mathbf{W})=\frac{\exp(\mathbf{W}^{(k)\top}\mathbf{x})}{\sum_{j=1}^{K}\exp(\mathbf{W}^{(j)\top}\mathbf{x})}
-  \end{equation*}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Softmax Regression --- Multi-classes Classifier}
-
-  \begin{align*}
-      J(\mathbf{W})&=-\frac{1}{N}\sum_{i}\sum_{k=1}^{K}\mathbf{1}\{y^{i}=k\}\log P(y^{i}=k|\mathbf{x}^{i}, \mathbf{W}) \\
-      \mathbf{W}^{\star}&=\argmin_{\mathbf{W}}J(\mathbf{W})
-  \end{align*}
-\end{frame}
+% \section{Softmax Regression}
+%
+% \begin{frame}
+%   \frametitle{Extending Logistic Function --- Softmax Function}
+%
+%   \begin{equation*}
+%       P(y=k|\mathbf{x}; \mathbf{W})=\frac{\exp(\mathbf{W}^{(k)\top}\mathbf{x}+b_{k})}{\sum_{j=1}^{K}\exp(\mathbf{W}^{(j)\top}\mathbf{x}+b_{k})}
+%   \end{equation*}
+% \end{frame}
+%
+% \begin{frame}
+%   \frametitle{Softmax Regression --- Multi-classes Classifier}
+%
+%   \begin{align*}
+%       J(\theta)&=-\frac{1}{N}\sum_{i=1}^{N}\sum_{k=1}^{K}\mathbf{1}\{y^{i}=k\}\log P(y^{i}=k|\mathbf{x}^{i}, \theta) \\
+%       \theta^{\star}&=\argmin_{\theta}J(\theta)
+%   \end{align*}
+% \end{frame}
 
 \section{Generalization, Capacity, Overfitting and Underfitting}
 
@@ -222,22 +222,20 @@ University of Z\"urich and ETH Z\"urich}
   \textbf{Seek solution for some relevant distributions, NOT universal distribution.}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Hyperparameters, Validation Sets}
+% \begin{frame}
+%   \frametitle{Hyperparameters, Validation Sets}
+%
+%   \begin{description}
+%     \item[Hyperparameters] settings that control the behavior of the learning algorithm. Usually choose empirically.
+%       \item[Validation Sets] Subset of data used to guide the selection of hyperparameters. (split from training dataset, usually 20\%)
+%   \end{description}
+% \end{frame}
 
-  \begin{description}
-    \item[Hyperparameters] settings that control the behavior of the learning algorithm. Usually choose empirically.
-      \item[Validation Sets] Subset of data used to guide the selection of hyperparameters. (split from training dataset, usually 20\%)
-  \end{description}
-\end{frame}
-
-\section{Fundamental Curse of Machine Learning}
-
-\begin{frame}
-  \frametitle{Curse of Dimensionality}
-  
-  Many machine learning problem become exceedingly difficult when the number of dimensions in the data is high. The phenomenon is known as the \emph{curse of dimensionality}. Of particular concern is that the number of possible distinct configurations of the variables of interest increases \textbf{exponentially} as the dimensionality increases.
-\end{frame}
+% \begin{frame}
+%   \frametitle{Curse of Dimensionality}
+%
+%   Many machine learning problem become exceedingly difficult when the number of dimensions in the data is high. The phenomenon is known as the \emph{curse of dimensionality}. Of particular concern is that the number of possible distinct configurations of the variables of interest increases \textbf{exponentially} as the dimensionality increases.
+% \end{frame}
 
 \begin{frame}
   \frametitle{Curse of Dimensionality}
@@ -285,7 +283,7 @@ University of Z\"urich and ETH Z\"urich}
   \frametitle{Stochastic Gradient Descent (SGD)}
 
   \begin{equation*}
-    \theta^{*}=\theta-\alpha\frac{\partial}{\partial \theta}L(\theta)
+    \theta^{*}=\theta-\alpha\frac{\partial}{\partial \theta}J(\theta)
   \end{equation*}
 \end{frame}
 
@@ -294,18 +292,18 @@ University of Z\"urich and ETH Z\"urich}
   \frametitle{Variants: momentum SGD}
 
   \begin{align*}
-    V^{*}&=\mu V-\alpha\nabla L(\theta) \\
-    \theta^{*}&=\theta+V^{*}
+    V^{*}&=\mu V+\alpha\nabla L(\theta) \\
+    \theta^{*}&=\theta-V^{*}
   \end{align*}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Variants: Nesterov's Accelerated Gradient (NAG)}
-  \begin{align*}
-    V^{*}&=\mu V-\alpha\nabla L(\theta+\mu V) \\
-    \theta^{*}&=\theta+V^{*}
-  \end{align*}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Variants: Nesterov's Accelerated Gradient (NAG)}
+%   \begin{align*}
+%     V^{*}&=\mu V-\alpha\nabla L(\theta+\mu V) \\
+%     \theta^{*}&=\theta+V^{*}
+%   \end{align*}
+% \end{frame}
 
 \section*{Q\&A}
 
