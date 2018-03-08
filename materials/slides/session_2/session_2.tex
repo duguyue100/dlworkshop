@@ -126,6 +126,18 @@ University of Z\"urich and ETH Z\"urich}
   
 \end{frame}
 
+\begin{frame}
+    \frametitle{Ingredients to solve a Machine Learning task}
+    \begin{itemize}
+        \item A hypothesis function $f(\mathbf{x}; \theta)$ (the computer program)
+        \item A loss function $J$
+        \item A training algorithm $\theta^{\star}=\argmin_{\theta}J(\theta)$
+        \item A training dataset $\{\mathcal{X}\}$
+        \item A validation dataset
+        \item (Optional) A testing dataset
+    \end{itemize}
+\end{frame}
+
 \section{Linear Regression}
 
 \begin{frame}
@@ -263,7 +275,7 @@ University of Z\"urich and ETH Z\"urich}
   \frametitle{Cost}
   \begin{itemize}
     \item Target: to learn some optimal parameters $\theta$
-    \item Strategy: to minimize some cost $L$ respect to $\theta$
+    \item Strategy: to minimize some cost $J$ respect to $\theta$
     \item Cost choice: cross-entropy cost, mean-squared error cost
     \item Solution: Gradient Descent!
   \end{itemize}
@@ -283,7 +295,7 @@ University of Z\"urich and ETH Z\"urich}
   \frametitle{Stochastic Gradient Descent (SGD)}
 
   \begin{equation*}
-    \theta^{*}=\theta-\alpha\frac{\partial}{\partial \theta}J(\theta)
+      \hat{\theta}=\theta-\alpha\frac{\partial}{\partial \theta}J(\theta)
   \end{equation*}
 \end{frame}
 
@@ -292,8 +304,8 @@ University of Z\"urich and ETH Z\"urich}
   \frametitle{Variants: momentum SGD}
 
   \begin{align*}
-    V^{*}&=\mu V+\alpha\nabla L(\theta) \\
-    \theta^{*}&=\theta-V^{*}
+      \hat{\mathbf{v}}&=\mu\mathbf{v}+\alpha\nabla_{\theta} J(\theta) \\
+      \hat{\theta}&=\theta-\mathbf{v}^{*}
   \end{align*}
 \end{frame}
 
