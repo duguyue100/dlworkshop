@@ -117,33 +117,33 @@ University of Z\"urich and ETH Z\"urich}
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Convolution operation}
-
-  \begin{equation*}
-    s(t)=\int x(a)w(t-a)\, da
-  \end{equation*}
-  the operation is called \emph{convolution}. The convolution operation is typically denoted with $*$:
-  \begin{equation*}
-    s(t)=(x*w)(t)
-  \end{equation*}
-  In discrete form:
-  \begin{equation*}
-    s[t]=(x*w)(t)=\sum_{a=-\infty}^{\infty}x[a]w[t-a]
-  \end{equation*}
-\end{frame}
-
-\begin{frame}
-  \frametitle{2D convolution operation}
-
-  \begin{equation*}
-    s[i,j]=(I*K)[i,j]=\sum_{m}\sum_{n}I[m,n]K[i-m, j-n]
-  \end{equation*}
-  or equivalently:
-  \begin{equation*}
-    s[i,j]=(I*K)[i,j]=\sum_{m}\sum_{n}I[i-m, j-n]K[m,n]
-  \end{equation*}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Convolution operation}
+%
+%   \begin{equation*}
+%     s(t)=\int x(a)w(t-a)\, da
+%   \end{equation*}
+%   the operation is called \emph{convolution}. The convolution operation is typically denoted with $*$:
+%   \begin{equation*}
+%     s(t)=(x*w)(t)
+%   \end{equation*}
+%   In discrete form:
+%   \begin{equation*}
+%     s[t]=(x*w)(t)=\sum_{a=-\infty}^{\infty}x[a]w[t-a]
+%   \end{equation*}
+% \end{frame}
+%
+% \begin{frame}
+%   \frametitle{2D convolution operation}
+%
+%   \begin{equation*}
+%     s[i,j]=(I*K)[i,j]=\sum_{m}\sum_{n}I[m,n]K[i-m, j-n]
+%   \end{equation*}
+%   or equivalently:
+%   \begin{equation*}
+%     s[i,j]=(I*K)[i,j]=\sum_{m}\sum_{n}I[i-m, j-n]K[m,n]
+%   \end{equation*}
+% \end{frame}
 
 \begin{frame}
   \frametitle{2D convolution operation}
@@ -194,18 +194,14 @@ University of Z\"urich and ETH Z\"urich}
 \begin{frame}
   \frametitle{Convolution Layer: simple cell}
 
-  \begin{equation*}
-    \mathbf{h}^{(k)}=f(\mathbf{x}*\mathbf{W}^{(k)}+b_{k})
-  \end{equation*}
-
   \begin{itemize}
-    \item Accepts a volume of size $W_{1}\times H_{1}\times D_{1}$
-    \item Number of filters $K$ with shape $F\times F\times D_{1}$, stride $S$, amount of zero-padding $P$
-    \item Produce a volume of size $W_{2}\times H_{2}\times D_{2}$ where
+      \item Accepts a volume of size $N_{f}\times N_{h}\times N_{w}$
+      \item Number of filters $K_{m}$ with shape $K_{n}\times K_{h}\times K_{w}$, stride $S_{h}, S_{v}$, amount of zero-padding $P_{h}, P_{v}$
+      \item Produce a volume of size $\hat{N}_{f}\times \hat{N}_{h}\times \hat{N}_{h}$ where
       \begin{align*}
-        W_{2}&=(W_{1}-F+2P)/S+1 \\
-        H_{2}&=(H_{1}-F+2P)/S+1 \\
-        D_{2}&=K
+          \hat{N}_{f}&=K_{m} \\
+        \hat{N}_{h}&=(N_{h}-K_{h}+2P_{v})/S_{v}+1 \\
+        \hat{N}_{w}&=(N_{w}-K_{w}+2P_{h})/S_{h}+1 \\
       \end{align*}
   \end{itemize}
 
@@ -217,7 +213,7 @@ University of Z\"urich and ETH Z\"urich}
 
   \begin{figure}
     \centering
-    \includegraphics[width=0.25\textwidth]{pool.jpeg}\\
+    \includegraphics[width=0.4\textwidth]{pool.jpeg}\\
     \includegraphics[width=0.5\textwidth]{maxpool.jpeg}
   \end{figure}
 \end{frame}
